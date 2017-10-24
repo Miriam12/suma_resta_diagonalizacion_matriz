@@ -1,0 +1,85 @@
+#include <iostream>
+#include <time.h>
+#include <stdlib.h>
+#define TREN 5
+#define TCOL 5
+
+
+int matA[5][5], matB[5][5], matSUMA[5][5],matRESTA[5][5],matDIAG[5][5];
+
+int main(int argc, char** argv) {
+	int alt=0, srand(time(NULL));
+	
+	for(int m=0;m<2;m++){	
+		for(int i=0;i<TREN;i++){
+			for(int j=0;j<TCOL;j++){
+				alt=rand()%121;
+				if(m==0){
+					matA[i][j]=alt;
+				}
+				if(m==1){
+					matB[i][j]=alt;
+				}
+			}
+		}
+	}
+
+	for(int m=0;m<2;m++){
+		if(m==0){
+			
+			printf("Matriz A:\n");
+			printf("\n");
+		}
+		else{
+			printf("\nMatriz B:\n");
+			printf("\n");
+		}
+		for(int i=0;i<TREN;i++){
+			for(int j=0;j<TCOL;j++){
+				if(m==0){
+					printf("%i\t", matA[i][j]);
+				}
+				if(m==1){
+					printf("%i\t", matB[i][j]);
+				}
+			}
+			printf("\n");
+		}
+	}
+
+    printf("\n");
+    printf("\n");
+    printf("LA MATRIZ OBTENIDA DE LA SUMA DE A Y B, ES:\n");
+	for(int i=0;i<TREN;i++){
+		for(int j=0;j<TCOL;j++){
+			matSUMA[i][j]=matA[i][j]+matB[i][j];
+			printf("%i\t", matSUMA[i][j]);
+		}
+		printf("\n");
+	}
+	
+	printf("\n");
+    printf("\n");
+    printf("LA MATRIZ OBTENIDA DE LA RESTA DE A Y B, ES:\n");
+	for(int i=0;i<TREN;i++){
+		for(int j=0;j<TCOL;j++){
+			matRESTA[i][j]=matA[i][j]-matB[i][j];
+			printf("%i\t", matRESTA[i][j]);
+		}
+		printf("\n");
+	}
+	
+	//RESTAR EN DIAGONAL LA MATRIZ
+		
+	printf("\n");
+    printf("\n");
+    printf("LA MATRIZ OBTENIDA DE LA RESTA DE A Y B,EN DIAGONAL ES:\n");
+	for(int i=0;i<TREN;i++){
+		for(int j=0;j<TCOL;j++){
+			matDIAG[i][j]=matA[i][j]-matB[i+1][j+1];
+			printf("%i\t", matDIAG[i][j]);
+		}
+		printf("\n");
+	}
+return 0;
+	}	
